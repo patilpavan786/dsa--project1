@@ -3,12 +3,14 @@ import CustomInput from '../../Atom/CustomInput/CustomInput';
 import CustomButton from '../../Atom/CustomButton/CustomButton';
 import style from './Home.module.css';
 import Navbar from '../../Atom/Navbar/Navbar';
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [search, setSearch] = useState('');
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
   const [package1, setPackage1] = useState([]);
+  const navigate= useNavigate()
   async function callApi() {
     const response = await fetch('https://api.npms.io/v2/search?q=reactjs');
     const data = await response.json();
@@ -33,12 +35,16 @@ export default function Home() {
     const previousContacts = JSON.parse(localStorage.getItem('favoritePackage')) || [];
     let newContacts = [ ...previousContacts,data];
     localStorage.setItem('favoritePackage', JSON.stringify(newContacts));
-
+setValue1("")
+setValue2("")
+navigate("/Favorite")
   }
   return (
     <div className={style.main}>
       <Navbar />
-      Search:-
+      <div className={style.title}>
+
+      <h1>Search:-</h1>
       <CustomInput
         type="text"
         placeholder="@search"
@@ -46,6 +52,8 @@ export default function Home() {
         value={search}
         className={style.input1}
       />
+      </div>
+    
       {package1
         .filter((x) =>
           x.package.name.toLowerCase().includes(search.toLowerCase())
@@ -70,7 +78,7 @@ export default function Home() {
         onChange={(e) => setValue2(e.target.value)}
         className={style.input3}
       />
-      <CustomButton txt="submit" onClick={handleSubmit} />
+      <CustomButton txt="submit" onClick={handleSubmit} className={style.btn}/>
     </div>
   );
 }

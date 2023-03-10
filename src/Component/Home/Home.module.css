@@ -1,6 +1,42 @@
+
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.input1{
+  width: 30rem;
+  height: 2rem;
+  border-radius: 10px;
+}
 .card{
   display: flex;
+
   gap: 5px;
   /* justify-content: center; */
   align-items: center;
+}
+.card p{
+  font-size: 20px;
+}
+.input3{
+  width: 40rem;
+  height: 15rem;
+  border-radius: 5px;
+}
+.btn{
+  margin-top: 1rem;
+  width: 10rem;
+  height: 3rem;
+  font-size: 20px;
+  border-radius: 10px;
+  color: white;
+  background-color: rgba(9, 41, 226, 0.678);
 }
