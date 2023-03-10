@@ -35,7 +35,7 @@ console.log(previousContacts)
   <p>{x.value1}</p>
   <p>{x.value2}</p>
   </div>
-
+  </div>
 )})}
 
 
