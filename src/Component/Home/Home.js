@@ -11,16 +11,12 @@ export default function Home() {
   const [value2, setValue2] = useState('');
   const [package1, setPackage1] = useState([]);
   const navigate= useNavigate()
-  async function callApi() {
-    const response = await fetch('https://api.npms.io/v2/search?q=reactjs');
-    const data = await response.json();
-    const newData = data.results;
-    setPackage1(newData);
-  }
 
   useEffect(() => {
-    callApi();
-  }, []);
+    fetch(`https://api.npms.io/v2/search?q=${search}`)
+    .then((res) => res.json())
+    .then((data1) =>  setPackage1(data1.results));
+  }, [search]);
 
   function handleClick(e) {
     setSearch(e.target.value);
@@ -53,13 +49,10 @@ navigate("/Favorite")
         className={style.input1}
       />
       </div>
-    
-      {package1
-        .filter((x) =>
-          x.package.name.toLowerCase().includes(search.toLowerCase())
-        )
-        .splice(0, 4)
-        .map((x, index) => {
+    <div className={style.cardcontainer}>
+
+
+    { package1?.map((x, index) => {
           return (
             <div id={index} className={style.card}>
               <CustomInput
@@ -72,6 +65,8 @@ navigate("/Favorite")
             </div>
           );
         })}
+    </div>
+    
       <CustomInput
         type="text"
         value={value2}

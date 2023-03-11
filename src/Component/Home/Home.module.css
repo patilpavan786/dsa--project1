@@ -16,11 +16,23 @@
   height: 2rem;
   border-radius: 10px;
 }
+.cardcontainer{
+  width:50%;
+  height:19rem;
+  overflow-y: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
 .card{
   display: flex;
 
   gap: 5px;
-  /* justify-content: center; */
+
+ 
   align-items: center;
 }
 .card p{
@@ -28,7 +40,7 @@
 }
 .input3{
   width: 40rem;
-  height: 15rem;
+  height: 12rem;
   border-radius: 5px;
 }
 .btn{
