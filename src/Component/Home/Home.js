@@ -63,7 +63,7 @@ navigate("/Favorite")
           return (
             <div id={index} className={style.card}>
               <CustomInput
-                type="checkbox"
+                type="radio"
                 value={x.package.name}
                 onChange={(e) => setValue1(e.target.value)}
                 className={style.input2}
