@@ -74,14 +74,16 @@ navigate("/Favorite")
           );
         })}
     </div>
-    
-      <CustomInput
+    <div   className={style.box2}>
+    <CustomInput
         type="text"
         value={value2}
         onChange={(e) => setValue2(e.target.value)}
         className={style.input3}
       />
       <CustomButton txt="submit" onClick={handleSubmit} className={style.btn}/>
+    </div>
+   
     </div>
   );
 }

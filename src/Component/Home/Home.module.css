@@ -3,7 +3,7 @@
 margin: 0;}
 
 .main{
-height: 675px;
+height: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +13,7 @@ height: 675px;
 background-image: url("https://static.vecteezy.com/system/resources/previews/001/984/880/original/abstract-colorful-geometric-overlapping-background-and-texture-free-vector.jpg");
 
 }
+
 .title{
   display: flex;
   justify-content: center;
@@ -54,10 +55,18 @@ padding-top: 8rem;
   font-size: 25px;
   color: black;
 }
+.box2{
+  display: flex;
+ 
+
+  align-items: center;
+justify-content: center; 
+   
+}
 .input3{
   padding-left: 1rem;
   width: 40rem;
-  height: 8rem;
+  height: 12rem;
   font-size: 21px;
   border-radius: 5px;
   background: transparent;

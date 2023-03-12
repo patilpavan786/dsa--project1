@@ -5,16 +5,10 @@
     align-items: center;
     flex-direction: row;
     justify-content: flex-start;
-   
 
-  
     background-color: rgb(167, 197, 224);
     text-decoration: none;
- 
-    
- 
-    
-   
+
 }
 .link{
     padding-left: 5rem;
