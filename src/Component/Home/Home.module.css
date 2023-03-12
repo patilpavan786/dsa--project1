@@ -17,22 +17,20 @@
   border-radius: 10px;
 }
 .cardcontainer{
-  width:50%;
+  width:40%;
   height:19rem;
-  overflow-y: scroll;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   flex-direction: column;
-
+  overflow: auto;
 }
-
+.cardcontainer::-webkit-scrollbar {
+  display: none;
+}
 .card{
   display: flex;
-
   gap: 5px;
-
- 
   align-items: center;
 }
 .card p{

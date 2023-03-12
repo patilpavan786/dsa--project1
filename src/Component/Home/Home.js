@@ -6,11 +6,17 @@ import Navbar from '../../Atom/Navbar/Navbar';
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+
   const [search, setSearch] = useState('');
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
   const [package1, setPackage1] = useState([]);
   const navigate= useNavigate()
+  useEffect(() => {
+    fetch("https://api.npms.io/v2/search?q=reactjs")
+    .then((res) => res.json())
+    .then((data1) =>  setPackage1(data1.results));
+  }, []);
 
   useEffect(() => {
     fetch(`https://api.npms.io/v2/search?q=${search}`)
@@ -27,6 +33,8 @@ export default function Home() {
       value1: value1,
       value2: value2,
     };
+    if (!value1.length>0 && !value2.length>0)
+    return
 
     const previousContacts = JSON.parse(localStorage.getItem('favoritePackage')) || [];
     let newContacts = [ ...previousContacts,data];

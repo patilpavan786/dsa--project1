@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 import style from "./Favorite.module.css";
 
 export default function Favorite() {
-  const previousContacts = JSON.parse(localStorage.getItem("favoritePackage")) || [];
+  const previousContacts =
+    JSON.parse(localStorage.getItem("favoritePackage")) || [];
 
   const [show, setShow] = useState(false);
   const [allContacts, setAllContacts] = useState(previousContacts);
-  console.log(previousContacts);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (previousContacts.length > 0) {
@@ -24,7 +25,22 @@ export default function Favorite() {
     setAllContacts(otherContacts);
   };
 
-  const navigate = useNavigate();
+
+  function HandleEdit(id) {
+    const contacts = JSON.parse(localStorage.getItem("favoritePackage")) || [];
+    contacts.forEach((item, i) => {
+      if (i === id) {
+        let editable = window.prompt(item.value2);
+        item.value2 = editable;
+      }
+    });
+    localStorage.setItem("favoritePackage", JSON.stringify(contacts));
+    setAllContacts([...contacts]);
+  }
+
+ 
+
+
   return (
     <div>
       <Navbar />
@@ -44,13 +60,17 @@ export default function Favorite() {
       {show ? (
         <>
           <div>
-            {allContacts.map((x) => {
+            {allContacts.map((x, i) => {
               return (
                 <div className={style.cardmain}>
                   <div className={style.card}>
                     <p>{x.value1}</p>
                     <p>{x.value2}</p>
-                    <CustomButton txt="Edit" className={style.btn} />
+                    <CustomButton
+                      txt="Edit"
+                      onClick={() => HandleEdit(i)}
+                      className={style.btn}
+                    />
                     <CustomButton
                       txt="Delete"
                       onClick={() => handleDelete(x.value1)}
