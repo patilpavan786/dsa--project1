@@ -4,6 +4,8 @@ import CustomButton from "../../Atom/CustomButton/CustomButton";
 import { useNavigate } from "react-router-dom";
 import style from "./Favorite.module.css";
 import Swal from 'sweetalert2';
+import { AiFillDelete ,AiOutlineEye } from 'react-icons/ai';
+import { FaEdit } from 'react-icons/fa';
 import swalWithBootstrapButtons from 'sweetalert2';
 export default function Favorite() {
   const previousContacts =
@@ -61,8 +63,8 @@ export default function Favorite() {
     const contacts = JSON.parse(localStorage.getItem("favoritePackage")) || [];
     contacts.forEach((item, i) => {
       if (i === id) {
-        let editable = window.prompt(item.value2);
-        item.value2 = editable;
+        let editable = window.prompt(item.value1);
+        item.value1 = editable;
       }
     });
     localStorage.setItem("favoritePackage", JSON.stringify(contacts));
@@ -97,19 +99,19 @@ export default function Favorite() {
                   <div className={style.card}>
                     <div className={style.txtmain}>
 
-                    <p>{x.value1}</p>
+                    <p>{`Package Name :-   ${x.value1}`}</p>
                     </div>
                     
                  <div className={style.btnmain}>
-                    <CustomButton
-                      txt="Edit"
-                      onClick={() => HandleEdit(i)}
-                      className={style.btn1}
+                  
+                    <AiOutlineEye 
+                    className={style.btn1}
                     />
-                    <CustomButton
-                      txt="Delete"
-                      onClick={() => handleDelete(x.value1)}
-                      className={style.btn1}
+                    <FaEdit
+                      onClick={() => HandleEdit(i)}
+                    />
+                    < AiFillDelete  
+                     onClick={() => handleDelete(x.value1)}
                     />
                     </div>
                   </div>
